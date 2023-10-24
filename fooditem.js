@@ -512,6 +512,8 @@ const foodItem= [
         img: 'image/schnitzel & grills/gizzzard.webp',
         quantity:1
 },
+
+// Seafood Deight/
 {
         id: 57,
         name: 'Sole & Chips Half',

@@ -9,6 +9,7 @@ function displayitems(){
     var rib= document.getElementById('rib');
     var salad= document.getElementById('salad');
     var grill= document.getElementById('grill');
+    var seafood= document.getElementById('seafood')
     var spurplatter= document.getElementById('spurplatter');
     var desert= document.getElementById('desert');
     var pizza= document.getElementById('pizza');
@@ -24,6 +25,8 @@ function displayitems(){
     console.log(saladData);
     const grillData= foodItem.filter(item=> item.category=='grill');
     console.log(grillData);
+    const seafoodData= foodItem.filter(item=> item.category=='seafood');
+    console.log(seafoodData);
     const spurplatterData= foodItem.filter(item=> item.category=='spurplatter');
     console.log(spurplatterData);
     const desertData= foodItem.filter(item=> item.category=='desert');
@@ -227,6 +230,45 @@ function displayitems(){
         itemCard.appendChild(itemPrice);
 
         grill.appendChild(itemCard);
+    })
+
+    seafoodData.map(item=> {
+        var itemCard= document.createElement('div');
+        itemCard.setAttribute('id','item-card');
+
+        var cardTop= document.createElement('div');
+        cardTop.setAttribute('id','card-top');
+
+        var star= document.createElement('i');
+        star.setAttribute('class','fa fa-star');
+        star.setAttribute('id','rating');
+        star.innerText= ' '+ item.rating;
+
+        var heart= document.createElement('i');
+        heart.setAttribute('class','fa fa-heart-o add-to-cart');
+        heart.setAttribute('id',item.id);
+        
+        cardTop.appendChild(star);
+        cardTop.appendChild(heart);
+
+
+        var img= document.createElement('img');
+        img.src= item.img;
+
+        var itemName= document.createElement('p');
+        itemName.setAttribute('id','item-name');
+        itemName.innerText= item.name;
+
+        var itemPrice= document.createElement('p');
+        itemPrice.setAttribute('id','item-price');
+        itemPrice.innerText='price : ₦ ' + item.price;
+
+        itemCard.appendChild(cardTop);
+        itemCard.appendChild(img);
+        itemCard.appendChild(itemName);
+        itemCard.appendChild(itemPrice);
+
+        seafood.appendChild(itemCard);
     })
 
     spurplatterData.map(item=> {
@@ -610,7 +652,6 @@ window.onresize= window.onload= function(){
         addEvents();
     }
     if(size > 800){
-        var cloneFoodItems= document.getElementById('food-items'). cloneNode(true);
         document.getElementById('food-items').remove();
         document.getElementById('header').after(cloneFoodItems);
 
